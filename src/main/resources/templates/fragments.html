@@ -26,6 +26,25 @@
             </div>
         </div>
     </div>
+    <div th:fragment="job-lister">
+    <table class="centeredTable">
+        <tr>
+            <th:block th:each="header : ${jobHeader}">
+                <th th:text = "${header}"></th>
+            </th:block>
+        </tr>
+
+        </tr>
+        <tr th:each="job : ${jobs}">
+            <td th:text="${job.id}"></td>
+            <td th:text="${job.name}"></td>
+            <td th:text="${job.employer}"></td>
+            <td th:text="${job.location}"></td>
+            <td th:text="${job.positionType}"></td>
+            <td th:text="${job.coreCompetency}"></td>
+        </tr>
+    </table>
+    </div>
 
 </body>
 </html>

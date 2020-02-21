@@ -7,8 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static org.launchcode.javawebdevtechjobsmvc.controllers.ListController.columnChoices;
+import static org.launchcode.javawebdevtechjobsmvc.controllers.ListController.jobListHeads;
 
 /**
  * Created by LaunchCode
@@ -23,6 +25,21 @@ public class SearchController {
         return "search";
     }
 
-    // TODO #3 - Create a handler to process a search request and render the updated search view.
+        @RequestMapping(value="results")
+        public String displaySearchResults(Model model, @RequestParam String searchTerm, @RequestParam String searchType){
+            ArrayList<Job> jobs;
+            if (searchTerm.toLowerCase().equals("all")){
+                jobs = JobData.findAll();
+                model.addAttribute("title", "All Jobs");
+            } else {
+                jobs = JobData.findByColumnAndValue(searchType, searchTerm);
+                model.addAttribute("title", "Jobs with "+ searchTerm+":");
+            }
+            model.addAttribute("jobs", jobs);
+            model.addAttribute("jobHeader", jobListHeads);
+            model.addAttribute("columns", columnChoices);
 
-}
+            return "search";
+        }
+    }
+
