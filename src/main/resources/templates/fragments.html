@@ -27,24 +27,19 @@
         </div>
     </div>
     <div th:fragment="job-lister">
-    <table class="centeredTable">
+    <table class="job-listing" >
+        <th:block th:each="job : ${jobs}">
         <tr>
-            <th:block th:each="header : ${jobHeader}">
-                <th th:text = "${header}"></th>
-            </th:block>
-        </tr>
-
-        </tr>
-        <tr th:each="job : ${jobs}">
-            <td th:text="${job.id}"></td>
-            <td th:text="${job.name}"></td>
-            <td th:text="${job.employer}"></td>
-            <td th:text="${job.location}"></td>
-            <td th:text="${job.positionType}"></td>
-            <td th:text="${job.coreCompetency}"></td>
-        </tr>
+        <td>
+            <p th:text="${ 'ID: '+ job.id}" ></p>
+            <p th:text="${ 'Name: '+ job.name}"></p>
+            <p th:text="${'Employer: '+ job.employer}"></p>
+            <p th:text="${'Location: '+ job.location}"></p>
+            <p th:text="${'Position Type: '+ job.positionType}"></p>
+            <p th:text="${'Skill: ' + job.coreCompetency}"></p>
+        </td>
+        </th:block>
     </table>
-    </div>
-
+</div>
 </body>
 </html>

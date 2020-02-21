@@ -30,10 +30,10 @@ public class SearchController {
             ArrayList<Job> jobs;
             if (searchTerm.toLowerCase().equals("all")){
                 jobs = JobData.findAll();
-                model.addAttribute("title", "All Jobs");
+                //model.addAttribute("title", "All Jobs");
             } else {
                 jobs = JobData.findByColumnAndValue(searchType, searchTerm);
-                model.addAttribute("title", "Jobs with "+ searchTerm+":");
+                //model.addAttribute("title", "Jobs with Keyword "+searchTerm+ " in "+ searchType+ " Category "+":");
             }
             model.addAttribute("jobs", jobs);
             model.addAttribute("jobHeader", jobListHeads);
