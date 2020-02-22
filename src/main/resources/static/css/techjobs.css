@@ -8,14 +8,19 @@ td, th {
 
 th {
     text-align: center;
+    font-family: Verdana;
+
 }
 
 td {
     vertical-align: top;
+    font-style: italic
+
 }
 
 tr:nth-child(odd) {
     background-color: #e4e4e4;
+
 }
 
 .centeredTable {
