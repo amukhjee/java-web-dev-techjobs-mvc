@@ -17,11 +17,12 @@ import static org.launchcode.javawebdevtechjobsmvc.controllers.ListController.jo
  */
 @Controller
 @RequestMapping("search")
-public class SearchController {
+public class SearchController extends TechJobsController {
 
     @RequestMapping(value = "")
     public String search(Model model) {
         model.addAttribute("columns", columnChoices);
+        model.addAttribute("actions", actionChoices);
         return "search";
     }
 
@@ -30,7 +31,7 @@ public class SearchController {
             ArrayList<Job> jobs;
             if (searchTerm.toLowerCase().equals("all")){
                 jobs = JobData.findAll();
-                //model.addAttribute("title", "All Jobs");
+
             } else {
                 jobs = JobData.findByColumnAndValue(searchType, searchTerm);
                 //model.addAttribute("title", "Jobs with Keyword "+searchTerm+ " in "+ searchType+ " Category "+":");
@@ -39,6 +40,7 @@ public class SearchController {
             model.addAttribute("jobHeader", jobListHeads);
             model.addAttribute("columns", columnChoices);
             model.addAttribute("searchType", searchType);
+            model.addAttribute("actions", actionChoices);
 
             return "search";
         }
@@ -47,16 +49,16 @@ public class SearchController {
         ArrayList<Job> jobs;
         if (searchTerm.toLowerCase().equals("all")){
             jobs = JobData.findAll();
-            //model.addAttribute("title", "All Jobs");
         } else {
             jobs = JobData.findByColumnAndValue(searchType, searchTerm);
-            //model.addAttribute("title", "Jobs with Keyword "+searchTerm+ " in "+ searchType+ " Category "+":");
         }
+
         model.addAttribute("jobs", jobs);
         model.addAttribute("jobHeader", jobListHeads);
         model.addAttribute("columns", columnChoices);
         model.addAttribute("searchType", searchType);
         model.addAttribute("searchTerm", searchTerm);
+        model.addAttribute("actions", actionChoices);
 
         return "search";
     }

@@ -23,7 +23,6 @@
                         th:checked="${column.key==searchType}"/>
                 <label th:for="${column.key}" th:text="${column.value}"></label>
             </span>
-
         </p>
 
         <p>
@@ -39,10 +38,6 @@
 
     <h1  th:text="${#strings.capitalizeWords(title)}"></h1>
     <div th:replace="fragments :: job-lister"></div>
-
-
-
-
 </div>
 
 </body>
