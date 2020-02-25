@@ -34,7 +34,7 @@ public class SearchController extends TechJobsController {
 
             } else {
                 jobs = JobData.findByColumnAndValue(searchType, searchTerm);
-                //model.addAttribute("title", "Jobs with Keyword "+searchTerm+ " in "+ searchType+ " Category "+":");
+                model.addAttribute("title", "Jobs with Keyword "+searchTerm+ " in "+ searchType+ " Category "+":");
             }
             model.addAttribute("jobs", jobs);
             model.addAttribute("jobHeader", jobListHeads);
